@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, use, useState } from "react";
+import { useEffect, use, useState, useRef } from "react";
 import { ChatDetailResponse } from "@/types/db";
-import { Header } from "@/components/header"; // Headerをインポート
+import { Header } from "@/components/header";
+import { MessageBlock } from "@/components/chat/message-block"; // 作成したコンポーネント
+import { Button } from "@/components/ui/button";
+import { Send, Plus } from "lucide-react";
 
 interface ChatPageProps {
   params: Promise<{ id: string }>;
@@ -11,6 +14,9 @@ interface ChatPageProps {
 export default function ChatPage({ params }: ChatPageProps) {
   const { id } = use(params);
   const [chatData, setChatData] = useState<ChatDetailResponse | null>(null);
+  const [input, setInput] = useState("");
+  // 自動スクロール用のref
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchChat = async () => {
@@ -26,42 +32,66 @@ export default function ChatPage({ params }: ChatPageProps) {
     fetchChat();
   }, [id]);
 
+  // ブランチ作成ボタンが押されたときの処理 (まだログ出しのみ)
+  const handleBranch = (blockId: string) => {
+    console.log(`Create new branch from block: ${blockId}`);
+    alert(`「${blockId}」からブランチを切ります（機能実装予定）`);
+  };
+
   if (!chatData) return <div className="p-8 text-muted-foreground">Loading...</div>;
 
   return (
     <>
-      {/* 会話タイトルと白背景を指定 */}
       <Header title={chatData.chat_title} className="bg-background" />
 
-      <main className="flex-1 bg-background p-6">
-        <div className="max-w-4xl mx-auto space-y-8 pb-10">
-          <div className="p-6 border rounded-xl bg-muted/20 shadow-sm">
-            <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-              Current Context (ID: {chatData.chat_id})
-            </h2>
-            <div className="flex flex-col gap-1">
-              <p className="text-2xl font-bold">{chatData.chat_title}</p>
-              
-              <div className="mt-4">
-                 <p className="font-semibold">Branches:</p>
-                 <ul className="list-disc list-inside text-sm">
-                   {chatData.branches.map(b => (
-                     <li key={b.branch_id}>{b.branch_title} ({b.status})</li>
-                   ))}
-                 </ul>
-              </div>
+      <main className="flex-1 bg-background relative flex flex-col">
+        {/* メッセージリストエリア */}
+        <div className="flex-1 overflow-y-auto p-4 pb-40">
+           {/* ブランチ情報などのメタデータ表示 (必要なら) */}
+           <div className="max-w-3xl mx-auto mb-8 p-4 border rounded-lg bg-muted/30 text-xs text-muted-foreground flex items-center justify-between">
+             <div className="flex items-center gap-2">
+               <span className="font-mono bg-background px-1.5 py-0.5 rounded border">
+                 {chatData.branches[0]?.branch_title || "Main"}
+               </span>
+               <span>Active Branch</span>
+             </div>
+             <div>ID: {chatData.chat_id}</div>
+           </div>
 
-              <div className="mt-4">
-                 <p className="font-semibold">Messages:</p>
-                 {chatData.blocks.map(blk => (
-                    <div key={blk.block_id} className="mt-2 p-2 bg-white rounded border">
-                        <p className="font-bold text-xs text-primary">User</p>
-                        <p className="text-sm mb-2">{blk.user_content}</p>
-                        <p className="font-bold text-xs text-green-600">AI</p>
-                        <p className="text-sm">{blk.ai_content}</p>
-                    </div>
-                 ))}
-              </div>
+           {/* メッセージブロックのレンダリング */}
+           {chatData.blocks.map((blk, index) => (
+             <MessageBlock 
+               key={blk.block_id} 
+               block={blk} 
+               isLast={index === chatData.blocks.length - 1}
+               onBranch={handleBranch}
+             />
+           ))}
+           <div ref={scrollRef} />
+        </div>
+
+        {/* 入力エリア (固定) */}
+        <div className="sticky bottom-0 bg-background/80 backdrop-blur-md border-t p-4">
+          <div className="max-w-3xl mx-auto relative">
+            <div className="bg-muted/30 border rounded-2xl p-2 flex items-end gap-2 focus-within:ring-1 ring-primary/20 transition-all">
+              <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full text-muted-foreground shrink-0">
+                <Plus className="h-5 w-5" />
+              </Button>
+              
+              <textarea 
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Reply to Main Branch..."
+                className="flex-1 bg-transparent border-none outline-none resize-none py-2.5 min-h-[44px] max-h-[200px]"
+                rows={1}
+              />
+              
+              <Button size="icon" className="h-10 w-10 rounded-full shrink-0">
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
+            <div className="text-center text-[10px] text-muted-foreground mt-2">
+              AI can make mistakes. Please check important information.
             </div>
           </div>
         </div>
