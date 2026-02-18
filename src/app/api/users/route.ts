@@ -2,10 +2,9 @@ import { NextResponse } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 
-// const prisma = new PrismaClient(); // 【削除】ここではnewしない
-
 export async function GET() {
-  const { userId } = await auth(); // clerk_id
+  // user_idをClerkから取得
+  const { userId } = await auth();
   
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
