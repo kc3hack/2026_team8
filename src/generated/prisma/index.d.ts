@@ -1197,13 +1197,13 @@ export namespace Prisma {
    */
 
   export type BranchesCountOutputType = {
-    child_branches: number
     blocks: number
+    child_branches: number
   }
 
   export type BranchesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    child_branches?: boolean | BranchesCountOutputTypeCountChild_branchesArgs
     blocks?: boolean | BranchesCountOutputTypeCountBlocksArgs
+    child_branches?: boolean | BranchesCountOutputTypeCountChild_branchesArgs
   }
 
   // Custom InputTypes
@@ -1220,15 +1220,15 @@ export namespace Prisma {
   /**
    * BranchesCountOutputType without action
    */
-  export type BranchesCountOutputTypeCountChild_branchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BranchesWhereInput
+  export type BranchesCountOutputTypeCountBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockWhereInput
   }
 
   /**
    * BranchesCountOutputType without action
    */
-  export type BranchesCountOutputTypeCountBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BlockWhereInput
+  export type BranchesCountOutputTypeCountChild_branchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BranchesWhereInput
   }
 
 
@@ -1283,6 +1283,7 @@ export namespace Prisma {
     email: string | null
     created_at: Date | null
     update_at: Date | null
+    clerk_id: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -1291,6 +1292,7 @@ export namespace Prisma {
     email: string | null
     created_at: Date | null
     update_at: Date | null
+    clerk_id: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -1299,6 +1301,7 @@ export namespace Prisma {
     email: number
     created_at: number
     update_at: number
+    clerk_id: number
     _all: number
   }
 
@@ -1309,6 +1312,7 @@ export namespace Prisma {
     email?: true
     created_at?: true
     update_at?: true
+    clerk_id?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -1317,6 +1321,7 @@ export namespace Prisma {
     email?: true
     created_at?: true
     update_at?: true
+    clerk_id?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -1325,6 +1330,7 @@ export namespace Prisma {
     email?: true
     created_at?: true
     update_at?: true
+    clerk_id?: true
     _all?: true
   }
 
@@ -1406,6 +1412,7 @@ export namespace Prisma {
     email: string
     created_at: Date
     update_at: Date
+    clerk_id: string
     _count: UsersCountAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
@@ -1431,6 +1438,7 @@ export namespace Prisma {
     email?: boolean
     created_at?: boolean
     update_at?: boolean
+    clerk_id?: boolean
     chatlists?: boolean | Users$chatlistsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
@@ -1441,6 +1449,7 @@ export namespace Prisma {
     email?: boolean
     created_at?: boolean
     update_at?: boolean
+    clerk_id?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1449,6 +1458,7 @@ export namespace Prisma {
     email?: boolean
     created_at?: boolean
     update_at?: boolean
+    clerk_id?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type UsersSelectScalar = {
@@ -1457,9 +1467,10 @@ export namespace Prisma {
     email?: boolean
     created_at?: boolean
     update_at?: boolean
+    clerk_id?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "name" | "email" | "created_at" | "update_at", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "name" | "email" | "created_at" | "update_at" | "clerk_id", ExtArgs["result"]["users"]>
   export type UsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chatlists?: boolean | Users$chatlistsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
@@ -1478,6 +1489,7 @@ export namespace Prisma {
       email: string
       created_at: Date
       update_at: Date
+      clerk_id: string
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -1907,6 +1919,7 @@ export namespace Prisma {
     readonly email: FieldRef<"Users", 'String'>
     readonly created_at: FieldRef<"Users", 'DateTime'>
     readonly update_at: FieldRef<"Users", 'DateTime'>
+    readonly clerk_id: FieldRef<"Users", 'String'>
   }
     
 
@@ -2517,9 +2530,9 @@ export namespace Prisma {
     chat_title?: boolean
     created_at?: boolean
     update_at?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
-    main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
     branches?: boolean | Chatlist$branchesArgs<ExtArgs>
+    main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     _count?: boolean | ChatlistCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chatlist"]>
 
@@ -2531,8 +2544,8 @@ export namespace Prisma {
     chat_title?: boolean
     created_at?: boolean
     update_at?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chatlist"]>
 
   export type ChatlistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2543,8 +2556,8 @@ export namespace Prisma {
     chat_title?: boolean
     created_at?: boolean
     update_at?: boolean
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chatlist"]>
 
   export type ChatlistSelectScalar = {
@@ -2559,26 +2572,26 @@ export namespace Prisma {
 
   export type ChatlistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"chat_id" | "user_id" | "main_branch_id" | "is_pinned" | "chat_title" | "created_at" | "update_at", ExtArgs["result"]["chatlist"]>
   export type ChatlistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
-    main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
     branches?: boolean | Chatlist$branchesArgs<ExtArgs>
+    main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
     _count?: boolean | ChatlistCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ChatlistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
   }
   export type ChatlistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UsersDefaultArgs<ExtArgs>
     main_branch?: boolean | Chatlist$main_branchArgs<ExtArgs>
+    user?: boolean | UsersDefaultArgs<ExtArgs>
   }
 
   export type $ChatlistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Chatlist"
     objects: {
-      user: Prisma.$UsersPayload<ExtArgs>
-      main_branch: Prisma.$BranchesPayload<ExtArgs> | null
       branches: Prisma.$BranchesPayload<ExtArgs>[]
+      main_branch: Prisma.$BranchesPayload<ExtArgs> | null
+      user: Prisma.$UsersPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       chat_id: string
@@ -2982,9 +2995,9 @@ export namespace Prisma {
    */
   export interface Prisma__ChatlistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    main_branch<T extends Chatlist$main_branchArgs<ExtArgs> = {}>(args?: Subset<T, Chatlist$main_branchArgs<ExtArgs>>): Prisma__BranchesClient<$Result.GetResult<Prisma.$BranchesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     branches<T extends Chatlist$branchesArgs<ExtArgs> = {}>(args?: Subset<T, Chatlist$branchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BranchesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    main_branch<T extends Chatlist$main_branchArgs<ExtArgs> = {}>(args?: Subset<T, Chatlist$main_branchArgs<ExtArgs>>): Prisma__BranchesClient<$Result.GetResult<Prisma.$BranchesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3417,25 +3430,6 @@ export namespace Prisma {
   }
 
   /**
-   * Chatlist.main_branch
-   */
-  export type Chatlist$main_branchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Branches
-     */
-    select?: BranchesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Branches
-     */
-    omit?: BranchesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BranchesInclude<ExtArgs> | null
-    where?: BranchesWhereInput
-  }
-
-  /**
    * Chatlist.branches
    */
   export type Chatlist$branchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3457,6 +3451,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BranchesScalarFieldEnum | BranchesScalarFieldEnum[]
+  }
+
+  /**
+   * Chatlist.main_branch
+   */
+  export type Chatlist$main_branchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Branches
+     */
+    select?: BranchesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Branches
+     */
+    omit?: BranchesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BranchesInclude<ExtArgs> | null
+    where?: BranchesWhereInput
   }
 
   /**
@@ -3666,12 +3679,12 @@ export namespace Prisma {
     status?: boolean
     created_at?: boolean
     update_at?: boolean
+    blocks?: boolean | Branches$blocksArgs<ExtArgs>
     chat?: boolean | ChatlistDefaultArgs<ExtArgs>
-    main_chat?: boolean | Branches$main_chatArgs<ExtArgs>
+    parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
     parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
     child_branches?: boolean | Branches$child_branchesArgs<ExtArgs>
-    parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
-    blocks?: boolean | Branches$blocksArgs<ExtArgs>
+    main_chat?: boolean | Branches$main_chatArgs<ExtArgs>
     _count?: boolean | BranchesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["branches"]>
 
@@ -3685,8 +3698,8 @@ export namespace Prisma {
     created_at?: boolean
     update_at?: boolean
     chat?: boolean | ChatlistDefaultArgs<ExtArgs>
-    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
     parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
+    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
   }, ExtArgs["result"]["branches"]>
 
   export type BranchesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3699,8 +3712,8 @@ export namespace Prisma {
     created_at?: boolean
     update_at?: boolean
     chat?: boolean | ChatlistDefaultArgs<ExtArgs>
-    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
     parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
+    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
   }, ExtArgs["result"]["branches"]>
 
   export type BranchesSelectScalar = {
@@ -3716,34 +3729,34 @@ export namespace Prisma {
 
   export type BranchesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"branch_id" | "chat_id" | "parent_branch_id" | "parent_block_id" | "branch_title" | "status" | "created_at" | "update_at", ExtArgs["result"]["branches"]>
   export type BranchesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blocks?: boolean | Branches$blocksArgs<ExtArgs>
     chat?: boolean | ChatlistDefaultArgs<ExtArgs>
-    main_chat?: boolean | Branches$main_chatArgs<ExtArgs>
+    parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
     parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
     child_branches?: boolean | Branches$child_branchesArgs<ExtArgs>
-    parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
-    blocks?: boolean | Branches$blocksArgs<ExtArgs>
+    main_chat?: boolean | Branches$main_chatArgs<ExtArgs>
     _count?: boolean | BranchesCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BranchesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chat?: boolean | ChatlistDefaultArgs<ExtArgs>
-    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
     parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
+    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
   }
   export type BranchesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chat?: boolean | ChatlistDefaultArgs<ExtArgs>
-    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
     parent_block?: boolean | Branches$parent_blockArgs<ExtArgs>
+    parent_branch?: boolean | Branches$parent_branchArgs<ExtArgs>
   }
 
   export type $BranchesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Branches"
     objects: {
+      blocks: Prisma.$BlockPayload<ExtArgs>[]
       chat: Prisma.$ChatlistPayload<ExtArgs>
-      main_chat: Prisma.$ChatlistPayload<ExtArgs> | null
+      parent_block: Prisma.$BlockPayload<ExtArgs> | null
       parent_branch: Prisma.$BranchesPayload<ExtArgs> | null
       child_branches: Prisma.$BranchesPayload<ExtArgs>[]
-      parent_block: Prisma.$BlockPayload<ExtArgs> | null
-      blocks: Prisma.$BlockPayload<ExtArgs>[]
+      main_chat: Prisma.$ChatlistPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       branch_id: string
@@ -4148,12 +4161,12 @@ export namespace Prisma {
    */
   export interface Prisma__BranchesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    blocks<T extends Branches$blocksArgs<ExtArgs> = {}>(args?: Subset<T, Branches$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     chat<T extends ChatlistDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChatlistDefaultArgs<ExtArgs>>): Prisma__ChatlistClient<$Result.GetResult<Prisma.$ChatlistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    main_chat<T extends Branches$main_chatArgs<ExtArgs> = {}>(args?: Subset<T, Branches$main_chatArgs<ExtArgs>>): Prisma__ChatlistClient<$Result.GetResult<Prisma.$ChatlistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    parent_block<T extends Branches$parent_blockArgs<ExtArgs> = {}>(args?: Subset<T, Branches$parent_blockArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     parent_branch<T extends Branches$parent_branchArgs<ExtArgs> = {}>(args?: Subset<T, Branches$parent_branchArgs<ExtArgs>>): Prisma__BranchesClient<$Result.GetResult<Prisma.$BranchesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     child_branches<T extends Branches$child_branchesArgs<ExtArgs> = {}>(args?: Subset<T, Branches$child_branchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BranchesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    parent_block<T extends Branches$parent_blockArgs<ExtArgs> = {}>(args?: Subset<T, Branches$parent_blockArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    blocks<T extends Branches$blocksArgs<ExtArgs> = {}>(args?: Subset<T, Branches$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    main_chat<T extends Branches$main_chatArgs<ExtArgs> = {}>(args?: Subset<T, Branches$main_chatArgs<ExtArgs>>): Prisma__ChatlistClient<$Result.GetResult<Prisma.$ChatlistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4587,22 +4600,46 @@ export namespace Prisma {
   }
 
   /**
-   * Branches.main_chat
+   * Branches.blocks
    */
-  export type Branches$main_chatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Branches$blocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Chatlist
+     * Select specific fields to fetch from the Block
      */
-    select?: ChatlistSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Chatlist
+     * Omit specific fields from the Block
      */
-    omit?: ChatlistOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ChatlistInclude<ExtArgs> | null
-    where?: ChatlistWhereInput
+    include?: BlockInclude<ExtArgs> | null
+    where?: BlockWhereInput
+    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
+    cursor?: BlockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BlockScalarFieldEnum | BlockScalarFieldEnum[]
+  }
+
+  /**
+   * Branches.parent_block
+   */
+  export type Branches$parent_blockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Block
+     */
+    select?: BlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Block
+     */
+    omit?: BlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockInclude<ExtArgs> | null
+    where?: BlockWhereInput
   }
 
   /**
@@ -4649,46 +4686,22 @@ export namespace Prisma {
   }
 
   /**
-   * Branches.parent_block
+   * Branches.main_chat
    */
-  export type Branches$parent_blockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Branches$main_chatArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Block
+     * Select specific fields to fetch from the Chatlist
      */
-    select?: BlockSelect<ExtArgs> | null
+    select?: ChatlistSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Block
+     * Omit specific fields from the Chatlist
      */
-    omit?: BlockOmit<ExtArgs> | null
+    omit?: ChatlistOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BlockInclude<ExtArgs> | null
-    where?: BlockWhereInput
-  }
-
-  /**
-   * Branches.blocks
-   */
-  export type Branches$blocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Block
-     */
-    select?: BlockSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Block
-     */
-    omit?: BlockOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BlockInclude<ExtArgs> | null
-    where?: BlockWhereInput
-    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
-    cursor?: BlockWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BlockScalarFieldEnum | BlockScalarFieldEnum[]
+    include?: ChatlistInclude<ExtArgs> | null
+    where?: ChatlistWhereInput
   }
 
   /**
@@ -5830,7 +5843,8 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     created_at: 'created_at',
-    update_at: 'update_at'
+    update_at: 'update_at',
+    clerk_id: 'clerk_id'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -5965,6 +5979,7 @@ export namespace Prisma {
     email?: StringFilter<"Users"> | string
     created_at?: DateTimeFilter<"Users"> | Date | string
     update_at?: DateTimeFilter<"Users"> | Date | string
+    clerk_id?: StringFilter<"Users"> | string
     chatlists?: ChatlistListRelationFilter
   }
 
@@ -5974,11 +5989,13 @@ export namespace Prisma {
     email?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
+    clerk_id?: SortOrder
     chatlists?: ChatlistOrderByRelationAggregateInput
   }
 
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     user_id?: string
+    clerk_id?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
@@ -5987,7 +6004,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Users"> | Date | string
     update_at?: DateTimeFilter<"Users"> | Date | string
     chatlists?: ChatlistListRelationFilter
-  }, "user_id">
+  }, "user_id" | "clerk_id">
 
   export type UsersOrderByWithAggregationInput = {
     user_id?: SortOrder
@@ -5995,6 +6012,7 @@ export namespace Prisma {
     email?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
+    clerk_id?: SortOrder
     _count?: UsersCountOrderByAggregateInput
     _max?: UsersMaxOrderByAggregateInput
     _min?: UsersMinOrderByAggregateInput
@@ -6009,6 +6027,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Users"> | string
     created_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
     update_at?: DateTimeWithAggregatesFilter<"Users"> | Date | string
+    clerk_id?: StringWithAggregatesFilter<"Users"> | string
   }
 
   export type ChatlistWhereInput = {
@@ -6022,9 +6041,9 @@ export namespace Prisma {
     chat_title?: StringFilter<"Chatlist"> | string
     created_at?: DateTimeFilter<"Chatlist"> | Date | string
     update_at?: DateTimeFilter<"Chatlist"> | Date | string
-    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    main_branch?: XOR<BranchesNullableScalarRelationFilter, BranchesWhereInput> | null
     branches?: BranchesListRelationFilter
+    main_branch?: XOR<BranchesNullableScalarRelationFilter, BranchesWhereInput> | null
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }
 
   export type ChatlistOrderByWithRelationInput = {
@@ -6035,9 +6054,9 @@ export namespace Prisma {
     chat_title?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
-    user?: UsersOrderByWithRelationInput
-    main_branch?: BranchesOrderByWithRelationInput
     branches?: BranchesOrderByRelationAggregateInput
+    main_branch?: BranchesOrderByWithRelationInput
+    user?: UsersOrderByWithRelationInput
   }
 
   export type ChatlistWhereUniqueInput = Prisma.AtLeast<{
@@ -6051,9 +6070,9 @@ export namespace Prisma {
     chat_title?: StringFilter<"Chatlist"> | string
     created_at?: DateTimeFilter<"Chatlist"> | Date | string
     update_at?: DateTimeFilter<"Chatlist"> | Date | string
-    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    main_branch?: XOR<BranchesNullableScalarRelationFilter, BranchesWhereInput> | null
     branches?: BranchesListRelationFilter
+    main_branch?: XOR<BranchesNullableScalarRelationFilter, BranchesWhereInput> | null
+    user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
   }, "chat_id" | "main_branch_id">
 
   export type ChatlistOrderByWithAggregationInput = {
@@ -6094,12 +6113,12 @@ export namespace Prisma {
     status?: StringFilter<"Branches"> | string
     created_at?: DateTimeFilter<"Branches"> | Date | string
     update_at?: DateTimeFilter<"Branches"> | Date | string
+    blocks?: BlockListRelationFilter
     chat?: XOR<ChatlistScalarRelationFilter, ChatlistWhereInput>
-    main_chat?: XOR<ChatlistNullableScalarRelationFilter, ChatlistWhereInput> | null
+    parent_block?: XOR<BlockNullableScalarRelationFilter, BlockWhereInput> | null
     parent_branch?: XOR<BranchesNullableScalarRelationFilter, BranchesWhereInput> | null
     child_branches?: BranchesListRelationFilter
-    parent_block?: XOR<BlockNullableScalarRelationFilter, BlockWhereInput> | null
-    blocks?: BlockListRelationFilter
+    main_chat?: XOR<ChatlistNullableScalarRelationFilter, ChatlistWhereInput> | null
   }
 
   export type BranchesOrderByWithRelationInput = {
@@ -6111,12 +6130,12 @@ export namespace Prisma {
     status?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
+    blocks?: BlockOrderByRelationAggregateInput
     chat?: ChatlistOrderByWithRelationInput
-    main_chat?: ChatlistOrderByWithRelationInput
+    parent_block?: BlockOrderByWithRelationInput
     parent_branch?: BranchesOrderByWithRelationInput
     child_branches?: BranchesOrderByRelationAggregateInput
-    parent_block?: BlockOrderByWithRelationInput
-    blocks?: BlockOrderByRelationAggregateInput
+    main_chat?: ChatlistOrderByWithRelationInput
   }
 
   export type BranchesWhereUniqueInput = Prisma.AtLeast<{
@@ -6131,12 +6150,12 @@ export namespace Prisma {
     status?: StringFilter<"Branches"> | string
     created_at?: DateTimeFilter<"Branches"> | Date | string
     update_at?: DateTimeFilter<"Branches"> | Date | string
+    blocks?: BlockListRelationFilter
     chat?: XOR<ChatlistScalarRelationFilter, ChatlistWhereInput>
-    main_chat?: XOR<ChatlistNullableScalarRelationFilter, ChatlistWhereInput> | null
+    parent_block?: XOR<BlockNullableScalarRelationFilter, BlockWhereInput> | null
     parent_branch?: XOR<BranchesNullableScalarRelationFilter, BranchesWhereInput> | null
     child_branches?: BranchesListRelationFilter
-    parent_block?: XOR<BlockNullableScalarRelationFilter, BlockWhereInput> | null
-    blocks?: BlockListRelationFilter
+    main_chat?: XOR<ChatlistNullableScalarRelationFilter, ChatlistWhereInput> | null
   }, "branch_id">
 
   export type BranchesOrderByWithAggregationInput = {
@@ -6236,6 +6255,7 @@ export namespace Prisma {
     email: string
     created_at?: Date | string
     update_at?: Date | string
+    clerk_id: string
     chatlists?: ChatlistCreateNestedManyWithoutUserInput
   }
 
@@ -6245,6 +6265,7 @@ export namespace Prisma {
     email: string
     created_at?: Date | string
     update_at?: Date | string
+    clerk_id: string
     chatlists?: ChatlistUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -6254,6 +6275,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerk_id?: StringFieldUpdateOperationsInput | string
     chatlists?: ChatlistUpdateManyWithoutUserNestedInput
   }
 
@@ -6263,6 +6285,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerk_id?: StringFieldUpdateOperationsInput | string
     chatlists?: ChatlistUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -6272,6 +6295,7 @@ export namespace Prisma {
     email: string
     created_at?: Date | string
     update_at?: Date | string
+    clerk_id: string
   }
 
   export type UsersUpdateManyMutationInput = {
@@ -6280,6 +6304,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerk_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type UsersUncheckedUpdateManyInput = {
@@ -6288,6 +6313,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerk_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type ChatlistCreateInput = {
@@ -6296,9 +6322,9 @@ export namespace Prisma {
     chat_title: string
     created_at?: Date | string
     update_at?: Date | string
-    user: UsersCreateNestedOneWithoutChatlistsInput
-    main_branch?: BranchesCreateNestedOneWithoutMain_chatInput
     branches?: BranchesCreateNestedManyWithoutChatInput
+    main_branch?: BranchesCreateNestedOneWithoutMain_chatInput
+    user: UsersCreateNestedOneWithoutChatlistsInput
   }
 
   export type ChatlistUncheckedCreateInput = {
@@ -6318,9 +6344,9 @@ export namespace Prisma {
     chat_title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutChatlistsNestedInput
-    main_branch?: BranchesUpdateOneWithoutMain_chatNestedInput
     branches?: BranchesUpdateManyWithoutChatNestedInput
+    main_branch?: BranchesUpdateOneWithoutMain_chatNestedInput
+    user?: UsersUpdateOneRequiredWithoutChatlistsNestedInput
   }
 
   export type ChatlistUncheckedUpdateInput = {
@@ -6368,12 +6394,12 @@ export namespace Prisma {
     status: string
     created_at?: Date | string
     update_at?: Date | string
+    blocks?: BlockCreateNestedManyWithoutBranchInput
     chat: ChatlistCreateNestedOneWithoutBranchesInput
-    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
+    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
     parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
     child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
-    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
-    blocks?: BlockCreateNestedManyWithoutBranchInput
+    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesUncheckedCreateInput = {
@@ -6385,9 +6411,9 @@ export namespace Prisma {
     status: string
     created_at?: Date | string
     update_at?: Date | string
-    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
-    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
+    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
+    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesUpdateInput = {
@@ -6396,12 +6422,12 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutBranchNestedInput
     chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
-    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
+    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
     parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
     child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
-    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
-    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUncheckedUpdateInput = {
@@ -6413,9 +6439,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
-    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
+    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesCreateManyInput = {
@@ -6568,6 +6594,7 @@ export namespace Prisma {
     email?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
+    clerk_id?: SortOrder
   }
 
   export type UsersMaxOrderByAggregateInput = {
@@ -6576,6 +6603,7 @@ export namespace Prisma {
     email?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
+    clerk_id?: SortOrder
   }
 
   export type UsersMinOrderByAggregateInput = {
@@ -6584,6 +6612,7 @@ export namespace Prisma {
     email?: SortOrder
     created_at?: SortOrder
     update_at?: SortOrder
+    clerk_id?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -6650,9 +6679,10 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type UsersScalarRelationFilter = {
-    is?: UsersWhereInput
-    isNot?: UsersWhereInput
+  export type BranchesListRelationFilter = {
+    every?: BranchesWhereInput
+    some?: BranchesWhereInput
+    none?: BranchesWhereInput
   }
 
   export type BranchesNullableScalarRelationFilter = {
@@ -6660,10 +6690,9 @@ export namespace Prisma {
     isNot?: BranchesWhereInput | null
   }
 
-  export type BranchesListRelationFilter = {
-    every?: BranchesWhereInput
-    some?: BranchesWhereInput
-    none?: BranchesWhereInput
+  export type UsersScalarRelationFilter = {
+    is?: UsersWhereInput
+    isNot?: UsersWhereInput
   }
 
   export type SortOrderInput = {
@@ -6728,14 +6757,15 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type BlockListRelationFilter = {
+    every?: BlockWhereInput
+    some?: BlockWhereInput
+    none?: BlockWhereInput
+  }
+
   export type ChatlistScalarRelationFilter = {
     is?: ChatlistWhereInput
     isNot?: ChatlistWhereInput
-  }
-
-  export type ChatlistNullableScalarRelationFilter = {
-    is?: ChatlistWhereInput | null
-    isNot?: ChatlistWhereInput | null
   }
 
   export type BlockNullableScalarRelationFilter = {
@@ -6743,10 +6773,9 @@ export namespace Prisma {
     isNot?: BlockWhereInput | null
   }
 
-  export type BlockListRelationFilter = {
-    every?: BlockWhereInput
-    some?: BlockWhereInput
-    none?: BlockWhereInput
+  export type ChatlistNullableScalarRelationFilter = {
+    is?: ChatlistWhereInput | null
+    isNot?: ChatlistWhereInput | null
   }
 
   export type BlockOrderByRelationAggregateInput = {
@@ -6868,10 +6897,11 @@ export namespace Prisma {
     deleteMany?: ChatlistScalarWhereInput | ChatlistScalarWhereInput[]
   }
 
-  export type UsersCreateNestedOneWithoutChatlistsInput = {
-    create?: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutChatlistsInput
-    connect?: UsersWhereUniqueInput
+  export type BranchesCreateNestedManyWithoutChatInput = {
+    create?: XOR<BranchesCreateWithoutChatInput, BranchesUncheckedCreateWithoutChatInput> | BranchesCreateWithoutChatInput[] | BranchesUncheckedCreateWithoutChatInput[]
+    connectOrCreate?: BranchesCreateOrConnectWithoutChatInput | BranchesCreateOrConnectWithoutChatInput[]
+    createMany?: BranchesCreateManyChatInputEnvelope
+    connect?: BranchesWhereUniqueInput | BranchesWhereUniqueInput[]
   }
 
   export type BranchesCreateNestedOneWithoutMain_chatInput = {
@@ -6880,11 +6910,10 @@ export namespace Prisma {
     connect?: BranchesWhereUniqueInput
   }
 
-  export type BranchesCreateNestedManyWithoutChatInput = {
-    create?: XOR<BranchesCreateWithoutChatInput, BranchesUncheckedCreateWithoutChatInput> | BranchesCreateWithoutChatInput[] | BranchesUncheckedCreateWithoutChatInput[]
-    connectOrCreate?: BranchesCreateOrConnectWithoutChatInput | BranchesCreateOrConnectWithoutChatInput[]
-    createMany?: BranchesCreateManyChatInputEnvelope
-    connect?: BranchesWhereUniqueInput | BranchesWhereUniqueInput[]
+  export type UsersCreateNestedOneWithoutChatlistsInput = {
+    create?: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutChatlistsInput
+    connect?: UsersWhereUniqueInput
   }
 
   export type BranchesUncheckedCreateNestedManyWithoutChatInput = {
@@ -6896,24 +6925,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type UsersUpdateOneRequiredWithoutChatlistsNestedInput = {
-    create?: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
-    connectOrCreate?: UsersCreateOrConnectWithoutChatlistsInput
-    upsert?: UsersUpsertWithoutChatlistsInput
-    connect?: UsersWhereUniqueInput
-    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutChatlistsInput, UsersUpdateWithoutChatlistsInput>, UsersUncheckedUpdateWithoutChatlistsInput>
-  }
-
-  export type BranchesUpdateOneWithoutMain_chatNestedInput = {
-    create?: XOR<BranchesCreateWithoutMain_chatInput, BranchesUncheckedCreateWithoutMain_chatInput>
-    connectOrCreate?: BranchesCreateOrConnectWithoutMain_chatInput
-    upsert?: BranchesUpsertWithoutMain_chatInput
-    disconnect?: BranchesWhereInput | boolean
-    delete?: BranchesWhereInput | boolean
-    connect?: BranchesWhereUniqueInput
-    update?: XOR<XOR<BranchesUpdateToOneWithWhereWithoutMain_chatInput, BranchesUpdateWithoutMain_chatInput>, BranchesUncheckedUpdateWithoutMain_chatInput>
   }
 
   export type BranchesUpdateManyWithoutChatNestedInput = {
@@ -6928,6 +6939,24 @@ export namespace Prisma {
     update?: BranchesUpdateWithWhereUniqueWithoutChatInput | BranchesUpdateWithWhereUniqueWithoutChatInput[]
     updateMany?: BranchesUpdateManyWithWhereWithoutChatInput | BranchesUpdateManyWithWhereWithoutChatInput[]
     deleteMany?: BranchesScalarWhereInput | BranchesScalarWhereInput[]
+  }
+
+  export type BranchesUpdateOneWithoutMain_chatNestedInput = {
+    create?: XOR<BranchesCreateWithoutMain_chatInput, BranchesUncheckedCreateWithoutMain_chatInput>
+    connectOrCreate?: BranchesCreateOrConnectWithoutMain_chatInput
+    upsert?: BranchesUpsertWithoutMain_chatInput
+    disconnect?: BranchesWhereInput | boolean
+    delete?: BranchesWhereInput | boolean
+    connect?: BranchesWhereUniqueInput
+    update?: XOR<XOR<BranchesUpdateToOneWithWhereWithoutMain_chatInput, BranchesUpdateWithoutMain_chatInput>, BranchesUncheckedUpdateWithoutMain_chatInput>
+  }
+
+  export type UsersUpdateOneRequiredWithoutChatlistsNestedInput = {
+    create?: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
+    connectOrCreate?: UsersCreateOrConnectWithoutChatlistsInput
+    upsert?: UsersUpsertWithoutChatlistsInput
+    connect?: UsersWhereUniqueInput
+    update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutChatlistsInput, UsersUpdateWithoutChatlistsInput>, UsersUncheckedUpdateWithoutChatlistsInput>
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -6948,16 +6977,23 @@ export namespace Prisma {
     deleteMany?: BranchesScalarWhereInput | BranchesScalarWhereInput[]
   }
 
+  export type BlockCreateNestedManyWithoutBranchInput = {
+    create?: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput> | BlockCreateWithoutBranchInput[] | BlockUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: BlockCreateOrConnectWithoutBranchInput | BlockCreateOrConnectWithoutBranchInput[]
+    createMany?: BlockCreateManyBranchInputEnvelope
+    connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+  }
+
   export type ChatlistCreateNestedOneWithoutBranchesInput = {
     create?: XOR<ChatlistCreateWithoutBranchesInput, ChatlistUncheckedCreateWithoutBranchesInput>
     connectOrCreate?: ChatlistCreateOrConnectWithoutBranchesInput
     connect?: ChatlistWhereUniqueInput
   }
 
-  export type ChatlistCreateNestedOneWithoutMain_branchInput = {
-    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
-    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
-    connect?: ChatlistWhereUniqueInput
+  export type BlockCreateNestedOneWithoutForked_branchesInput = {
+    create?: XOR<BlockCreateWithoutForked_branchesInput, BlockUncheckedCreateWithoutForked_branchesInput>
+    connectOrCreate?: BlockCreateOrConnectWithoutForked_branchesInput
+    connect?: BlockWhereUniqueInput
   }
 
   export type BranchesCreateNestedOneWithoutChild_branchesInput = {
@@ -6973,23 +7009,17 @@ export namespace Prisma {
     connect?: BranchesWhereUniqueInput | BranchesWhereUniqueInput[]
   }
 
-  export type BlockCreateNestedOneWithoutForked_branchesInput = {
-    create?: XOR<BlockCreateWithoutForked_branchesInput, BlockUncheckedCreateWithoutForked_branchesInput>
-    connectOrCreate?: BlockCreateOrConnectWithoutForked_branchesInput
-    connect?: BlockWhereUniqueInput
+  export type ChatlistCreateNestedOneWithoutMain_branchInput = {
+    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
+    connect?: ChatlistWhereUniqueInput
   }
 
-  export type BlockCreateNestedManyWithoutBranchInput = {
+  export type BlockUncheckedCreateNestedManyWithoutBranchInput = {
     create?: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput> | BlockCreateWithoutBranchInput[] | BlockUncheckedCreateWithoutBranchInput[]
     connectOrCreate?: BlockCreateOrConnectWithoutBranchInput | BlockCreateOrConnectWithoutBranchInput[]
     createMany?: BlockCreateManyBranchInputEnvelope
     connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
-  }
-
-  export type ChatlistUncheckedCreateNestedOneWithoutMain_branchInput = {
-    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
-    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
-    connect?: ChatlistWhereUniqueInput
   }
 
   export type BranchesUncheckedCreateNestedManyWithoutParent_branchInput = {
@@ -6999,11 +7029,24 @@ export namespace Prisma {
     connect?: BranchesWhereUniqueInput | BranchesWhereUniqueInput[]
   }
 
-  export type BlockUncheckedCreateNestedManyWithoutBranchInput = {
+  export type ChatlistUncheckedCreateNestedOneWithoutMain_branchInput = {
+    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
+    connect?: ChatlistWhereUniqueInput
+  }
+
+  export type BlockUpdateManyWithoutBranchNestedInput = {
     create?: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput> | BlockCreateWithoutBranchInput[] | BlockUncheckedCreateWithoutBranchInput[]
     connectOrCreate?: BlockCreateOrConnectWithoutBranchInput | BlockCreateOrConnectWithoutBranchInput[]
+    upsert?: BlockUpsertWithWhereUniqueWithoutBranchInput | BlockUpsertWithWhereUniqueWithoutBranchInput[]
     createMany?: BlockCreateManyBranchInputEnvelope
+    set?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    disconnect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    delete?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
     connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    update?: BlockUpdateWithWhereUniqueWithoutBranchInput | BlockUpdateWithWhereUniqueWithoutBranchInput[]
+    updateMany?: BlockUpdateManyWithWhereWithoutBranchInput | BlockUpdateManyWithWhereWithoutBranchInput[]
+    deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
   }
 
   export type ChatlistUpdateOneRequiredWithoutBranchesNestedInput = {
@@ -7014,14 +7057,14 @@ export namespace Prisma {
     update?: XOR<XOR<ChatlistUpdateToOneWithWhereWithoutBranchesInput, ChatlistUpdateWithoutBranchesInput>, ChatlistUncheckedUpdateWithoutBranchesInput>
   }
 
-  export type ChatlistUpdateOneWithoutMain_branchNestedInput = {
-    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
-    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
-    upsert?: ChatlistUpsertWithoutMain_branchInput
-    disconnect?: ChatlistWhereInput | boolean
-    delete?: ChatlistWhereInput | boolean
-    connect?: ChatlistWhereUniqueInput
-    update?: XOR<XOR<ChatlistUpdateToOneWithWhereWithoutMain_branchInput, ChatlistUpdateWithoutMain_branchInput>, ChatlistUncheckedUpdateWithoutMain_branchInput>
+  export type BlockUpdateOneWithoutForked_branchesNestedInput = {
+    create?: XOR<BlockCreateWithoutForked_branchesInput, BlockUncheckedCreateWithoutForked_branchesInput>
+    connectOrCreate?: BlockCreateOrConnectWithoutForked_branchesInput
+    upsert?: BlockUpsertWithoutForked_branchesInput
+    disconnect?: BlockWhereInput | boolean
+    delete?: BlockWhereInput | boolean
+    connect?: BlockWhereUniqueInput
+    update?: XOR<XOR<BlockUpdateToOneWithWhereWithoutForked_branchesInput, BlockUpdateWithoutForked_branchesInput>, BlockUncheckedUpdateWithoutForked_branchesInput>
   }
 
   export type BranchesUpdateOneWithoutChild_branchesNestedInput = {
@@ -7048,17 +7091,17 @@ export namespace Prisma {
     deleteMany?: BranchesScalarWhereInput | BranchesScalarWhereInput[]
   }
 
-  export type BlockUpdateOneWithoutForked_branchesNestedInput = {
-    create?: XOR<BlockCreateWithoutForked_branchesInput, BlockUncheckedCreateWithoutForked_branchesInput>
-    connectOrCreate?: BlockCreateOrConnectWithoutForked_branchesInput
-    upsert?: BlockUpsertWithoutForked_branchesInput
-    disconnect?: BlockWhereInput | boolean
-    delete?: BlockWhereInput | boolean
-    connect?: BlockWhereUniqueInput
-    update?: XOR<XOR<BlockUpdateToOneWithWhereWithoutForked_branchesInput, BlockUpdateWithoutForked_branchesInput>, BlockUncheckedUpdateWithoutForked_branchesInput>
+  export type ChatlistUpdateOneWithoutMain_branchNestedInput = {
+    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
+    upsert?: ChatlistUpsertWithoutMain_branchInput
+    disconnect?: ChatlistWhereInput | boolean
+    delete?: ChatlistWhereInput | boolean
+    connect?: ChatlistWhereUniqueInput
+    update?: XOR<XOR<ChatlistUpdateToOneWithWhereWithoutMain_branchInput, ChatlistUpdateWithoutMain_branchInput>, ChatlistUncheckedUpdateWithoutMain_branchInput>
   }
 
-  export type BlockUpdateManyWithoutBranchNestedInput = {
+  export type BlockUncheckedUpdateManyWithoutBranchNestedInput = {
     create?: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput> | BlockCreateWithoutBranchInput[] | BlockUncheckedCreateWithoutBranchInput[]
     connectOrCreate?: BlockCreateOrConnectWithoutBranchInput | BlockCreateOrConnectWithoutBranchInput[]
     upsert?: BlockUpsertWithWhereUniqueWithoutBranchInput | BlockUpsertWithWhereUniqueWithoutBranchInput[]
@@ -7070,16 +7113,6 @@ export namespace Prisma {
     update?: BlockUpdateWithWhereUniqueWithoutBranchInput | BlockUpdateWithWhereUniqueWithoutBranchInput[]
     updateMany?: BlockUpdateManyWithWhereWithoutBranchInput | BlockUpdateManyWithWhereWithoutBranchInput[]
     deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
-  }
-
-  export type ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput = {
-    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
-    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
-    upsert?: ChatlistUpsertWithoutMain_branchInput
-    disconnect?: ChatlistWhereInput | boolean
-    delete?: ChatlistWhereInput | boolean
-    connect?: ChatlistWhereUniqueInput
-    update?: XOR<XOR<ChatlistUpdateToOneWithWhereWithoutMain_branchInput, ChatlistUpdateWithoutMain_branchInput>, ChatlistUncheckedUpdateWithoutMain_branchInput>
   }
 
   export type BranchesUncheckedUpdateManyWithoutParent_branchNestedInput = {
@@ -7096,18 +7129,14 @@ export namespace Prisma {
     deleteMany?: BranchesScalarWhereInput | BranchesScalarWhereInput[]
   }
 
-  export type BlockUncheckedUpdateManyWithoutBranchNestedInput = {
-    create?: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput> | BlockCreateWithoutBranchInput[] | BlockUncheckedCreateWithoutBranchInput[]
-    connectOrCreate?: BlockCreateOrConnectWithoutBranchInput | BlockCreateOrConnectWithoutBranchInput[]
-    upsert?: BlockUpsertWithWhereUniqueWithoutBranchInput | BlockUpsertWithWhereUniqueWithoutBranchInput[]
-    createMany?: BlockCreateManyBranchInputEnvelope
-    set?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
-    disconnect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
-    delete?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
-    connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
-    update?: BlockUpdateWithWhereUniqueWithoutBranchInput | BlockUpdateWithWhereUniqueWithoutBranchInput[]
-    updateMany?: BlockUpdateManyWithWhereWithoutBranchInput | BlockUpdateManyWithWhereWithoutBranchInput[]
-    deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
+  export type ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput = {
+    create?: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+    connectOrCreate?: ChatlistCreateOrConnectWithoutMain_branchInput
+    upsert?: ChatlistUpsertWithoutMain_branchInput
+    disconnect?: ChatlistWhereInput | boolean
+    delete?: ChatlistWhereInput | boolean
+    connect?: ChatlistWhereUniqueInput
+    update?: XOR<XOR<ChatlistUpdateToOneWithWhereWithoutMain_branchInput, ChatlistUpdateWithoutMain_branchInput>, ChatlistUncheckedUpdateWithoutMain_branchInput>
   }
 
   export type BranchesCreateNestedOneWithoutBlocksInput = {
@@ -7327,8 +7356,8 @@ export namespace Prisma {
     chat_title: string
     created_at?: Date | string
     update_at?: Date | string
-    main_branch?: BranchesCreateNestedOneWithoutMain_chatInput
     branches?: BranchesCreateNestedManyWithoutChatInput
+    main_branch?: BranchesCreateNestedOneWithoutMain_chatInput
   }
 
   export type ChatlistUncheckedCreateWithoutUserInput = {
@@ -7380,69 +7409,17 @@ export namespace Prisma {
     update_at?: DateTimeFilter<"Chatlist"> | Date | string
   }
 
-  export type UsersCreateWithoutChatlistsInput = {
-    user_id?: string
-    name: string
-    email: string
-    created_at?: Date | string
-    update_at?: Date | string
-  }
-
-  export type UsersUncheckedCreateWithoutChatlistsInput = {
-    user_id?: string
-    name: string
-    email: string
-    created_at?: Date | string
-    update_at?: Date | string
-  }
-
-  export type UsersCreateOrConnectWithoutChatlistsInput = {
-    where: UsersWhereUniqueInput
-    create: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
-  }
-
-  export type BranchesCreateWithoutMain_chatInput = {
-    branch_id?: string
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-    chat: ChatlistCreateNestedOneWithoutBranchesInput
-    parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
-    child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
-    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
-    blocks?: BlockCreateNestedManyWithoutBranchInput
-  }
-
-  export type BranchesUncheckedCreateWithoutMain_chatInput = {
-    branch_id?: string
-    chat_id: string
-    parent_branch_id?: string | null
-    parent_block_id?: string | null
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
-    blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
-  }
-
-  export type BranchesCreateOrConnectWithoutMain_chatInput = {
-    where: BranchesWhereUniqueInput
-    create: XOR<BranchesCreateWithoutMain_chatInput, BranchesUncheckedCreateWithoutMain_chatInput>
-  }
-
   export type BranchesCreateWithoutChatInput = {
     branch_id?: string
     branch_title: string
     status: string
     created_at?: Date | string
     update_at?: Date | string
-    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
+    blocks?: BlockCreateNestedManyWithoutBranchInput
+    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
     parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
     child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
-    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
-    blocks?: BlockCreateNestedManyWithoutBranchInput
+    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesUncheckedCreateWithoutChatInput = {
@@ -7453,9 +7430,9 @@ export namespace Prisma {
     status: string
     created_at?: Date | string
     update_at?: Date | string
-    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
-    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
+    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
+    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesCreateOrConnectWithoutChatInput = {
@@ -7468,68 +7445,58 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UsersUpsertWithoutChatlistsInput = {
-    update: XOR<UsersUpdateWithoutChatlistsInput, UsersUncheckedUpdateWithoutChatlistsInput>
-    create: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
-    where?: UsersWhereInput
+  export type BranchesCreateWithoutMain_chatInput = {
+    branch_id?: string
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
+    blocks?: BlockCreateNestedManyWithoutBranchInput
+    chat: ChatlistCreateNestedOneWithoutBranchesInput
+    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
+    parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
+    child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
   }
 
-  export type UsersUpdateToOneWithWhereWithoutChatlistsInput = {
-    where?: UsersWhereInput
-    data: XOR<UsersUpdateWithoutChatlistsInput, UsersUncheckedUpdateWithoutChatlistsInput>
+  export type BranchesUncheckedCreateWithoutMain_chatInput = {
+    branch_id?: string
+    chat_id: string
+    parent_branch_id?: string | null
+    parent_block_id?: string | null
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
+    blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
+    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
   }
 
-  export type UsersUpdateWithoutChatlistsInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UsersUncheckedUpdateWithoutChatlistsInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BranchesUpsertWithoutMain_chatInput = {
-    update: XOR<BranchesUpdateWithoutMain_chatInput, BranchesUncheckedUpdateWithoutMain_chatInput>
+  export type BranchesCreateOrConnectWithoutMain_chatInput = {
+    where: BranchesWhereUniqueInput
     create: XOR<BranchesCreateWithoutMain_chatInput, BranchesUncheckedCreateWithoutMain_chatInput>
-    where?: BranchesWhereInput
   }
 
-  export type BranchesUpdateToOneWithWhereWithoutMain_chatInput = {
-    where?: BranchesWhereInput
-    data: XOR<BranchesUpdateWithoutMain_chatInput, BranchesUncheckedUpdateWithoutMain_chatInput>
+  export type UsersCreateWithoutChatlistsInput = {
+    user_id?: string
+    name: string
+    email: string
+    created_at?: Date | string
+    update_at?: Date | string
+    clerk_id: string
   }
 
-  export type BranchesUpdateWithoutMain_chatInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
-    parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
-    child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
-    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
-    blocks?: BlockUpdateManyWithoutBranchNestedInput
+  export type UsersUncheckedCreateWithoutChatlistsInput = {
+    user_id?: string
+    name: string
+    email: string
+    created_at?: Date | string
+    update_at?: Date | string
+    clerk_id: string
   }
 
-  export type BranchesUncheckedUpdateWithoutMain_chatInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    chat_id?: StringFieldUpdateOperationsInput | string
-    parent_branch_id?: NullableStringFieldUpdateOperationsInput | string | null
-    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
-    blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+  export type UsersCreateOrConnectWithoutChatlistsInput = {
+    where: UsersWhereUniqueInput
+    create: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
   }
 
   export type BranchesUpsertWithWhereUniqueWithoutChatInput = {
@@ -7562,144 +7529,70 @@ export namespace Prisma {
     update_at?: DateTimeFilter<"Branches"> | Date | string
   }
 
-  export type ChatlistCreateWithoutBranchesInput = {
-    chat_id?: string
-    is_pinned: boolean
-    chat_title: string
-    created_at?: Date | string
-    update_at?: Date | string
-    user: UsersCreateNestedOneWithoutChatlistsInput
-    main_branch?: BranchesCreateNestedOneWithoutMain_chatInput
+  export type BranchesUpsertWithoutMain_chatInput = {
+    update: XOR<BranchesUpdateWithoutMain_chatInput, BranchesUncheckedUpdateWithoutMain_chatInput>
+    create: XOR<BranchesCreateWithoutMain_chatInput, BranchesUncheckedCreateWithoutMain_chatInput>
+    where?: BranchesWhereInput
   }
 
-  export type ChatlistUncheckedCreateWithoutBranchesInput = {
-    chat_id?: string
-    user_id: string
-    main_branch_id?: string | null
-    is_pinned: boolean
-    chat_title: string
-    created_at?: Date | string
-    update_at?: Date | string
+  export type BranchesUpdateToOneWithWhereWithoutMain_chatInput = {
+    where?: BranchesWhereInput
+    data: XOR<BranchesUpdateWithoutMain_chatInput, BranchesUncheckedUpdateWithoutMain_chatInput>
   }
 
-  export type ChatlistCreateOrConnectWithoutBranchesInput = {
-    where: ChatlistWhereUniqueInput
-    create: XOR<ChatlistCreateWithoutBranchesInput, ChatlistUncheckedCreateWithoutBranchesInput>
+  export type BranchesUpdateWithoutMain_chatInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
+    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
+    parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
+    child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
   }
 
-  export type ChatlistCreateWithoutMain_branchInput = {
-    chat_id?: string
-    is_pinned: boolean
-    chat_title: string
-    created_at?: Date | string
-    update_at?: Date | string
-    user: UsersCreateNestedOneWithoutChatlistsInput
-    branches?: BranchesCreateNestedManyWithoutChatInput
+  export type BranchesUncheckedUpdateWithoutMain_chatInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    chat_id?: StringFieldUpdateOperationsInput | string
+    parent_branch_id?: NullableStringFieldUpdateOperationsInput | string | null
+    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
   }
 
-  export type ChatlistUncheckedCreateWithoutMain_branchInput = {
-    chat_id?: string
-    user_id: string
-    is_pinned: boolean
-    chat_title: string
-    created_at?: Date | string
-    update_at?: Date | string
-    branches?: BranchesUncheckedCreateNestedManyWithoutChatInput
+  export type UsersUpsertWithoutChatlistsInput = {
+    update: XOR<UsersUpdateWithoutChatlistsInput, UsersUncheckedUpdateWithoutChatlistsInput>
+    create: XOR<UsersCreateWithoutChatlistsInput, UsersUncheckedCreateWithoutChatlistsInput>
+    where?: UsersWhereInput
   }
 
-  export type ChatlistCreateOrConnectWithoutMain_branchInput = {
-    where: ChatlistWhereUniqueInput
-    create: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+  export type UsersUpdateToOneWithWhereWithoutChatlistsInput = {
+    where?: UsersWhereInput
+    data: XOR<UsersUpdateWithoutChatlistsInput, UsersUncheckedUpdateWithoutChatlistsInput>
   }
 
-  export type BranchesCreateWithoutChild_branchesInput = {
-    branch_id?: string
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-    chat: ChatlistCreateNestedOneWithoutBranchesInput
-    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
-    parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
-    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
-    blocks?: BlockCreateNestedManyWithoutBranchInput
+  export type UsersUpdateWithoutChatlistsInput = {
+    user_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerk_id?: StringFieldUpdateOperationsInput | string
   }
 
-  export type BranchesUncheckedCreateWithoutChild_branchesInput = {
-    branch_id?: string
-    chat_id: string
-    parent_branch_id?: string | null
-    parent_block_id?: string | null
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
-    blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
-  }
-
-  export type BranchesCreateOrConnectWithoutChild_branchesInput = {
-    where: BranchesWhereUniqueInput
-    create: XOR<BranchesCreateWithoutChild_branchesInput, BranchesUncheckedCreateWithoutChild_branchesInput>
-  }
-
-  export type BranchesCreateWithoutParent_branchInput = {
-    branch_id?: string
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-    chat: ChatlistCreateNestedOneWithoutBranchesInput
-    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
-    child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
-    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
-    blocks?: BlockCreateNestedManyWithoutBranchInput
-  }
-
-  export type BranchesUncheckedCreateWithoutParent_branchInput = {
-    branch_id?: string
-    chat_id: string
-    parent_block_id?: string | null
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
-    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
-    blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
-  }
-
-  export type BranchesCreateOrConnectWithoutParent_branchInput = {
-    where: BranchesWhereUniqueInput
-    create: XOR<BranchesCreateWithoutParent_branchInput, BranchesUncheckedCreateWithoutParent_branchInput>
-  }
-
-  export type BranchesCreateManyParent_branchInputEnvelope = {
-    data: BranchesCreateManyParent_branchInput | BranchesCreateManyParent_branchInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type BlockCreateWithoutForked_branchesInput = {
-    block_id?: string
-    user_content: string
-    ai_content: string
-    created_at?: Date | string
-    update_at?: Date | string
-    branch: BranchesCreateNestedOneWithoutBlocksInput
-  }
-
-  export type BlockUncheckedCreateWithoutForked_branchesInput = {
-    block_id?: string
-    branch_id: string
-    user_content: string
-    ai_content: string
-    created_at?: Date | string
-    update_at?: Date | string
-  }
-
-  export type BlockCreateOrConnectWithoutForked_branchesInput = {
-    where: BlockWhereUniqueInput
-    create: XOR<BlockCreateWithoutForked_branchesInput, BlockUncheckedCreateWithoutForked_branchesInput>
+  export type UsersUncheckedUpdateWithoutChatlistsInput = {
+    user_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    clerk_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type BlockCreateWithoutBranchInput = {
@@ -7730,6 +7623,174 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ChatlistCreateWithoutBranchesInput = {
+    chat_id?: string
+    is_pinned: boolean
+    chat_title: string
+    created_at?: Date | string
+    update_at?: Date | string
+    main_branch?: BranchesCreateNestedOneWithoutMain_chatInput
+    user: UsersCreateNestedOneWithoutChatlistsInput
+  }
+
+  export type ChatlistUncheckedCreateWithoutBranchesInput = {
+    chat_id?: string
+    user_id: string
+    main_branch_id?: string | null
+    is_pinned: boolean
+    chat_title: string
+    created_at?: Date | string
+    update_at?: Date | string
+  }
+
+  export type ChatlistCreateOrConnectWithoutBranchesInput = {
+    where: ChatlistWhereUniqueInput
+    create: XOR<ChatlistCreateWithoutBranchesInput, ChatlistUncheckedCreateWithoutBranchesInput>
+  }
+
+  export type BlockCreateWithoutForked_branchesInput = {
+    block_id?: string
+    user_content: string
+    ai_content: string
+    created_at?: Date | string
+    update_at?: Date | string
+    branch: BranchesCreateNestedOneWithoutBlocksInput
+  }
+
+  export type BlockUncheckedCreateWithoutForked_branchesInput = {
+    block_id?: string
+    branch_id: string
+    user_content: string
+    ai_content: string
+    created_at?: Date | string
+    update_at?: Date | string
+  }
+
+  export type BlockCreateOrConnectWithoutForked_branchesInput = {
+    where: BlockWhereUniqueInput
+    create: XOR<BlockCreateWithoutForked_branchesInput, BlockUncheckedCreateWithoutForked_branchesInput>
+  }
+
+  export type BranchesCreateWithoutChild_branchesInput = {
+    branch_id?: string
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
+    blocks?: BlockCreateNestedManyWithoutBranchInput
+    chat: ChatlistCreateNestedOneWithoutBranchesInput
+    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
+    parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
+    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
+  }
+
+  export type BranchesUncheckedCreateWithoutChild_branchesInput = {
+    branch_id?: string
+    chat_id: string
+    parent_branch_id?: string | null
+    parent_block_id?: string | null
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
+    blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
+    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
+  }
+
+  export type BranchesCreateOrConnectWithoutChild_branchesInput = {
+    where: BranchesWhereUniqueInput
+    create: XOR<BranchesCreateWithoutChild_branchesInput, BranchesUncheckedCreateWithoutChild_branchesInput>
+  }
+
+  export type BranchesCreateWithoutParent_branchInput = {
+    branch_id?: string
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
+    blocks?: BlockCreateNestedManyWithoutBranchInput
+    chat: ChatlistCreateNestedOneWithoutBranchesInput
+    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
+    child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
+    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
+  }
+
+  export type BranchesUncheckedCreateWithoutParent_branchInput = {
+    branch_id?: string
+    chat_id: string
+    parent_block_id?: string | null
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
+    blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
+    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
+    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
+  }
+
+  export type BranchesCreateOrConnectWithoutParent_branchInput = {
+    where: BranchesWhereUniqueInput
+    create: XOR<BranchesCreateWithoutParent_branchInput, BranchesUncheckedCreateWithoutParent_branchInput>
+  }
+
+  export type BranchesCreateManyParent_branchInputEnvelope = {
+    data: BranchesCreateManyParent_branchInput | BranchesCreateManyParent_branchInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ChatlistCreateWithoutMain_branchInput = {
+    chat_id?: string
+    is_pinned: boolean
+    chat_title: string
+    created_at?: Date | string
+    update_at?: Date | string
+    branches?: BranchesCreateNestedManyWithoutChatInput
+    user: UsersCreateNestedOneWithoutChatlistsInput
+  }
+
+  export type ChatlistUncheckedCreateWithoutMain_branchInput = {
+    chat_id?: string
+    user_id: string
+    is_pinned: boolean
+    chat_title: string
+    created_at?: Date | string
+    update_at?: Date | string
+    branches?: BranchesUncheckedCreateNestedManyWithoutChatInput
+  }
+
+  export type ChatlistCreateOrConnectWithoutMain_branchInput = {
+    where: ChatlistWhereUniqueInput
+    create: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+  }
+
+  export type BlockUpsertWithWhereUniqueWithoutBranchInput = {
+    where: BlockWhereUniqueInput
+    update: XOR<BlockUpdateWithoutBranchInput, BlockUncheckedUpdateWithoutBranchInput>
+    create: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput>
+  }
+
+  export type BlockUpdateWithWhereUniqueWithoutBranchInput = {
+    where: BlockWhereUniqueInput
+    data: XOR<BlockUpdateWithoutBranchInput, BlockUncheckedUpdateWithoutBranchInput>
+  }
+
+  export type BlockUpdateManyWithWhereWithoutBranchInput = {
+    where: BlockScalarWhereInput
+    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyWithoutBranchInput>
+  }
+
+  export type BlockScalarWhereInput = {
+    AND?: BlockScalarWhereInput | BlockScalarWhereInput[]
+    OR?: BlockScalarWhereInput[]
+    NOT?: BlockScalarWhereInput | BlockScalarWhereInput[]
+    block_id?: UuidFilter<"Block"> | string
+    branch_id?: UuidFilter<"Block"> | string
+    user_content?: StringFilter<"Block"> | string
+    ai_content?: StringFilter<"Block"> | string
+    created_at?: DateTimeFilter<"Block"> | Date | string
+    update_at?: DateTimeFilter<"Block"> | Date | string
+  }
+
   export type ChatlistUpsertWithoutBranchesInput = {
     update: XOR<ChatlistUpdateWithoutBranchesInput, ChatlistUncheckedUpdateWithoutBranchesInput>
     create: XOR<ChatlistCreateWithoutBranchesInput, ChatlistUncheckedCreateWithoutBranchesInput>
@@ -7747,8 +7808,8 @@ export namespace Prisma {
     chat_title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutChatlistsNestedInput
     main_branch?: BranchesUpdateOneWithoutMain_chatNestedInput
+    user?: UsersUpdateOneRequiredWithoutChatlistsNestedInput
   }
 
   export type ChatlistUncheckedUpdateWithoutBranchesInput = {
@@ -7759,90 +7820,6 @@ export namespace Prisma {
     chat_title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChatlistUpsertWithoutMain_branchInput = {
-    update: XOR<ChatlistUpdateWithoutMain_branchInput, ChatlistUncheckedUpdateWithoutMain_branchInput>
-    create: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
-    where?: ChatlistWhereInput
-  }
-
-  export type ChatlistUpdateToOneWithWhereWithoutMain_branchInput = {
-    where?: ChatlistWhereInput
-    data: XOR<ChatlistUpdateWithoutMain_branchInput, ChatlistUncheckedUpdateWithoutMain_branchInput>
-  }
-
-  export type ChatlistUpdateWithoutMain_branchInput = {
-    chat_id?: StringFieldUpdateOperationsInput | string
-    is_pinned?: BoolFieldUpdateOperationsInput | boolean
-    chat_title?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UsersUpdateOneRequiredWithoutChatlistsNestedInput
-    branches?: BranchesUpdateManyWithoutChatNestedInput
-  }
-
-  export type ChatlistUncheckedUpdateWithoutMain_branchInput = {
-    chat_id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    is_pinned?: BoolFieldUpdateOperationsInput | boolean
-    chat_title?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    branches?: BranchesUncheckedUpdateManyWithoutChatNestedInput
-  }
-
-  export type BranchesUpsertWithoutChild_branchesInput = {
-    update: XOR<BranchesUpdateWithoutChild_branchesInput, BranchesUncheckedUpdateWithoutChild_branchesInput>
-    create: XOR<BranchesCreateWithoutChild_branchesInput, BranchesUncheckedCreateWithoutChild_branchesInput>
-    where?: BranchesWhereInput
-  }
-
-  export type BranchesUpdateToOneWithWhereWithoutChild_branchesInput = {
-    where?: BranchesWhereInput
-    data: XOR<BranchesUpdateWithoutChild_branchesInput, BranchesUncheckedUpdateWithoutChild_branchesInput>
-  }
-
-  export type BranchesUpdateWithoutChild_branchesInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
-    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
-    parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
-    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
-    blocks?: BlockUpdateManyWithoutBranchNestedInput
-  }
-
-  export type BranchesUncheckedUpdateWithoutChild_branchesInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    chat_id?: StringFieldUpdateOperationsInput | string
-    parent_branch_id?: NullableStringFieldUpdateOperationsInput | string | null
-    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
-    blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
-  }
-
-  export type BranchesUpsertWithWhereUniqueWithoutParent_branchInput = {
-    where: BranchesWhereUniqueInput
-    update: XOR<BranchesUpdateWithoutParent_branchInput, BranchesUncheckedUpdateWithoutParent_branchInput>
-    create: XOR<BranchesCreateWithoutParent_branchInput, BranchesUncheckedCreateWithoutParent_branchInput>
-  }
-
-  export type BranchesUpdateWithWhereUniqueWithoutParent_branchInput = {
-    where: BranchesWhereUniqueInput
-    data: XOR<BranchesUpdateWithoutParent_branchInput, BranchesUncheckedUpdateWithoutParent_branchInput>
-  }
-
-  export type BranchesUpdateManyWithWhereWithoutParent_branchInput = {
-    where: BranchesScalarWhereInput
-    data: XOR<BranchesUpdateManyMutationInput, BranchesUncheckedUpdateManyWithoutParent_branchInput>
   }
 
   export type BlockUpsertWithoutForked_branchesInput = {
@@ -7874,32 +7851,88 @@ export namespace Prisma {
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BlockUpsertWithWhereUniqueWithoutBranchInput = {
-    where: BlockWhereUniqueInput
-    update: XOR<BlockUpdateWithoutBranchInput, BlockUncheckedUpdateWithoutBranchInput>
-    create: XOR<BlockCreateWithoutBranchInput, BlockUncheckedCreateWithoutBranchInput>
+  export type BranchesUpsertWithoutChild_branchesInput = {
+    update: XOR<BranchesUpdateWithoutChild_branchesInput, BranchesUncheckedUpdateWithoutChild_branchesInput>
+    create: XOR<BranchesCreateWithoutChild_branchesInput, BranchesUncheckedCreateWithoutChild_branchesInput>
+    where?: BranchesWhereInput
   }
 
-  export type BlockUpdateWithWhereUniqueWithoutBranchInput = {
-    where: BlockWhereUniqueInput
-    data: XOR<BlockUpdateWithoutBranchInput, BlockUncheckedUpdateWithoutBranchInput>
+  export type BranchesUpdateToOneWithWhereWithoutChild_branchesInput = {
+    where?: BranchesWhereInput
+    data: XOR<BranchesUpdateWithoutChild_branchesInput, BranchesUncheckedUpdateWithoutChild_branchesInput>
   }
 
-  export type BlockUpdateManyWithWhereWithoutBranchInput = {
-    where: BlockScalarWhereInput
-    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyWithoutBranchInput>
+  export type BranchesUpdateWithoutChild_branchesInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
+    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
+    parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
+    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
   }
 
-  export type BlockScalarWhereInput = {
-    AND?: BlockScalarWhereInput | BlockScalarWhereInput[]
-    OR?: BlockScalarWhereInput[]
-    NOT?: BlockScalarWhereInput | BlockScalarWhereInput[]
-    block_id?: UuidFilter<"Block"> | string
-    branch_id?: UuidFilter<"Block"> | string
-    user_content?: StringFilter<"Block"> | string
-    ai_content?: StringFilter<"Block"> | string
-    created_at?: DateTimeFilter<"Block"> | Date | string
-    update_at?: DateTimeFilter<"Block"> | Date | string
+  export type BranchesUncheckedUpdateWithoutChild_branchesInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    chat_id?: StringFieldUpdateOperationsInput | string
+    parent_branch_id?: NullableStringFieldUpdateOperationsInput | string | null
+    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
+  }
+
+  export type BranchesUpsertWithWhereUniqueWithoutParent_branchInput = {
+    where: BranchesWhereUniqueInput
+    update: XOR<BranchesUpdateWithoutParent_branchInput, BranchesUncheckedUpdateWithoutParent_branchInput>
+    create: XOR<BranchesCreateWithoutParent_branchInput, BranchesUncheckedCreateWithoutParent_branchInput>
+  }
+
+  export type BranchesUpdateWithWhereUniqueWithoutParent_branchInput = {
+    where: BranchesWhereUniqueInput
+    data: XOR<BranchesUpdateWithoutParent_branchInput, BranchesUncheckedUpdateWithoutParent_branchInput>
+  }
+
+  export type BranchesUpdateManyWithWhereWithoutParent_branchInput = {
+    where: BranchesScalarWhereInput
+    data: XOR<BranchesUpdateManyMutationInput, BranchesUncheckedUpdateManyWithoutParent_branchInput>
+  }
+
+  export type ChatlistUpsertWithoutMain_branchInput = {
+    update: XOR<ChatlistUpdateWithoutMain_branchInput, ChatlistUncheckedUpdateWithoutMain_branchInput>
+    create: XOR<ChatlistCreateWithoutMain_branchInput, ChatlistUncheckedCreateWithoutMain_branchInput>
+    where?: ChatlistWhereInput
+  }
+
+  export type ChatlistUpdateToOneWithWhereWithoutMain_branchInput = {
+    where?: ChatlistWhereInput
+    data: XOR<ChatlistUpdateWithoutMain_branchInput, ChatlistUncheckedUpdateWithoutMain_branchInput>
+  }
+
+  export type ChatlistUpdateWithoutMain_branchInput = {
+    chat_id?: StringFieldUpdateOperationsInput | string
+    is_pinned?: BoolFieldUpdateOperationsInput | boolean
+    chat_title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    branches?: BranchesUpdateManyWithoutChatNestedInput
+    user?: UsersUpdateOneRequiredWithoutChatlistsNestedInput
+  }
+
+  export type ChatlistUncheckedUpdateWithoutMain_branchInput = {
+    chat_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    is_pinned?: BoolFieldUpdateOperationsInput | boolean
+    chat_title?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    branches?: BranchesUncheckedUpdateManyWithoutChatNestedInput
   }
 
   export type BranchesCreateWithoutBlocksInput = {
@@ -7909,10 +7942,10 @@ export namespace Prisma {
     created_at?: Date | string
     update_at?: Date | string
     chat: ChatlistCreateNestedOneWithoutBranchesInput
-    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
+    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
     parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
     child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
-    parent_block?: BlockCreateNestedOneWithoutForked_branchesInput
+    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesUncheckedCreateWithoutBlocksInput = {
@@ -7924,8 +7957,8 @@ export namespace Prisma {
     status: string
     created_at?: Date | string
     update_at?: Date | string
-    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
     child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
+    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesCreateOrConnectWithoutBlocksInput = {
@@ -7939,11 +7972,11 @@ export namespace Prisma {
     status: string
     created_at?: Date | string
     update_at?: Date | string
+    blocks?: BlockCreateNestedManyWithoutBranchInput
     chat: ChatlistCreateNestedOneWithoutBranchesInput
-    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
     parent_branch?: BranchesCreateNestedOneWithoutChild_branchesInput
     child_branches?: BranchesCreateNestedManyWithoutParent_branchInput
-    blocks?: BlockCreateNestedManyWithoutBranchInput
+    main_chat?: ChatlistCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesUncheckedCreateWithoutParent_blockInput = {
@@ -7954,9 +7987,9 @@ export namespace Prisma {
     status: string
     created_at?: Date | string
     update_at?: Date | string
-    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
-    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
     blocks?: BlockUncheckedCreateNestedManyWithoutBranchInput
+    child_branches?: BranchesUncheckedCreateNestedManyWithoutParent_branchInput
+    main_chat?: ChatlistUncheckedCreateNestedOneWithoutMain_branchInput
   }
 
   export type BranchesCreateOrConnectWithoutParent_blockInput = {
@@ -7987,10 +8020,10 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
-    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
+    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
     parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
     child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
-    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
+    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUncheckedUpdateWithoutBlocksInput = {
@@ -8002,8 +8035,8 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
     child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
+    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUpsertWithWhereUniqueWithoutParent_blockInput = {
@@ -8037,8 +8070,8 @@ export namespace Prisma {
     chat_title?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_branch?: BranchesUpdateOneWithoutMain_chatNestedInput
     branches?: BranchesUpdateManyWithoutChatNestedInput
+    main_branch?: BranchesUpdateOneWithoutMain_chatNestedInput
   }
 
   export type ChatlistUncheckedUpdateWithoutUserInput = {
@@ -8076,11 +8109,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
+    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
     parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
     child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
-    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
-    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUncheckedUpdateWithoutChatInput = {
@@ -8091,9 +8124,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
-    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
+    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUncheckedUpdateManyWithoutChatInput = {
@@ -8106,16 +8139,6 @@ export namespace Prisma {
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BranchesCreateManyParent_branchInput = {
-    branch_id?: string
-    chat_id: string
-    parent_block_id?: string | null
-    branch_title: string
-    status: string
-    created_at?: Date | string
-    update_at?: Date | string
-  }
-
   export type BlockCreateManyBranchInput = {
     block_id?: string
     user_content: string
@@ -8124,40 +8147,14 @@ export namespace Prisma {
     update_at?: Date | string
   }
 
-  export type BranchesUpdateWithoutParent_branchInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
-    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
-    child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
-    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
-    blocks?: BlockUpdateManyWithoutBranchNestedInput
-  }
-
-  export type BranchesUncheckedUpdateWithoutParent_branchInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    chat_id?: StringFieldUpdateOperationsInput | string
-    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
-    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
-    blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
-  }
-
-  export type BranchesUncheckedUpdateManyWithoutParent_branchInput = {
-    branch_id?: StringFieldUpdateOperationsInput | string
-    chat_id?: StringFieldUpdateOperationsInput | string
-    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
-    branch_title?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type BranchesCreateManyParent_branchInput = {
+    branch_id?: string
+    chat_id: string
+    parent_block_id?: string | null
+    branch_title: string
+    status: string
+    created_at?: Date | string
+    update_at?: Date | string
   }
 
   export type BlockUpdateWithoutBranchInput = {
@@ -8186,6 +8183,42 @@ export namespace Prisma {
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BranchesUpdateWithoutParent_branchInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
+    parent_block?: BlockUpdateOneWithoutForked_branchesNestedInput
+    child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
+    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
+  }
+
+  export type BranchesUncheckedUpdateWithoutParent_branchInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    chat_id?: StringFieldUpdateOperationsInput | string
+    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
+    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
+  }
+
+  export type BranchesUncheckedUpdateManyWithoutParent_branchInput = {
+    branch_id?: StringFieldUpdateOperationsInput | string
+    chat_id?: StringFieldUpdateOperationsInput | string
+    parent_block_id?: NullableStringFieldUpdateOperationsInput | string | null
+    branch_title?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BranchesCreateManyParent_blockInput = {
     branch_id?: string
     chat_id: string
@@ -8202,11 +8235,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    blocks?: BlockUpdateManyWithoutBranchNestedInput
     chat?: ChatlistUpdateOneRequiredWithoutBranchesNestedInput
-    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
     parent_branch?: BranchesUpdateOneWithoutChild_branchesNestedInput
     child_branches?: BranchesUpdateManyWithoutParent_branchNestedInput
-    blocks?: BlockUpdateManyWithoutBranchNestedInput
+    main_chat?: ChatlistUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUncheckedUpdateWithoutParent_blockInput = {
@@ -8217,9 +8250,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     update_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
-    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
     blocks?: BlockUncheckedUpdateManyWithoutBranchNestedInput
+    child_branches?: BranchesUncheckedUpdateManyWithoutParent_branchNestedInput
+    main_chat?: ChatlistUncheckedUpdateOneWithoutMain_branchNestedInput
   }
 
   export type BranchesUncheckedUpdateManyWithoutParent_blockInput = {

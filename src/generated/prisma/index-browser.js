@@ -125,7 +125,8 @@ exports.Prisma.UsersScalarFieldEnum = {
   name: 'name',
   email: 'email',
   created_at: 'created_at',
-  update_at: 'update_at'
+  update_at: 'update_at',
+  clerk_id: 'clerk_id'
 };
 
 exports.Prisma.ChatlistScalarFieldEnum = {
