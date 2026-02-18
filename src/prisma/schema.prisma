@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Users {
+  user_id    String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String     @db.VarChar
+  email      String     @db.VarChar
+  created_at DateTime   @default(now()) @db.Timestamp(6)
+  update_at  DateTime   @updatedAt @db.Timestamp(6)
+  clerk_id   String     @unique @db.VarChar
+  chatlists  Chatlist[]
+
+  @@map("USERS")
+}
+
+model Chatlist {
+  chat_id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id        String     @db.Uuid
+  is_pinned      Boolean
+  chat_title     String     @db.VarChar
+  created_at     DateTime   @default(now()) @db.Timestamp(6)
+  update_at      DateTime   @updatedAt @db.Timestamp(6)
+  branches       Branches[] @relation("ChatBranches")
+  user           Users      @relation(fields: [user_id], references: [user_id])
+
+  @@map("CHATLIST")
+}
+
+model Branches {
+  branch_id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  chat_id          String     @db.Uuid
+  parent_branch_id String?    @db.Uuid
+  parent_block_id  String?    @db.Uuid
+  branch_title     String     @db.VarChar
+  status           String     @db.VarChar
+  created_at       DateTime   @default(now()) @db.Timestamp(6)
+  update_at        DateTime   @updatedAt @db.Timestamp(6)
+  depth            Int        @default(0)
+  blocks           Block[]    @relation("BranchBlocks")
+  chat             Chatlist   @relation("ChatBranches", fields: [chat_id], references: [chat_id])
+  parent_block     Block?     @relation("BlockFork", fields: [parent_block_id], references: [block_id])
+  parent_branch    Branches?  @relation("BranchHierarchy", fields: [parent_branch_id], references: [branch_id])
+  child_branches   Branches[] @relation("BranchHierarchy")
+
+  @@map("BRANCHES")
+}
+
+model Block {
+  block_id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  branch_id       String     @db.Uuid
+  user_content    String
+  ai_content      String
+  created_at      DateTime   @default(now()) @db.Timestamp(6)
+  update_at       DateTime   @updatedAt @db.Timestamp(6)
+  branch          Branches   @relation("BranchBlocks", fields: [branch_id], references: [branch_id])
+  forked_branches Branches[] @relation("BlockFork")
+
+  @@map("BLOCK")
+}
