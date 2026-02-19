@@ -18,7 +18,7 @@ export async function POST(req: Request) {
             prisma.block.deleteMany(),
             prisma.branches.deleteMany(),
             prisma.chatlist.deleteMany(),
-            prisma.users.deleteMany(),
+            // prisma.users.deleteMany(),
         ]);
 
         return new NextResponse("Database reset successful", { status: 200 });
